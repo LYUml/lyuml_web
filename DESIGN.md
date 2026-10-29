@@ -16,3 +16,6 @@ Body and skill text use 16px with 24–28px line height. Supporting labels, date
 
 ## Confirmed content refinements
 Prominent Data science / Operations research / AI interests sit directly with Building simulation / Digital twins / AI agents. PolyU highlights agent-based intelligent control, digital twins, and a separate ZB202_prediction CO₂ forecasting / ventilation-simulation bullet (not deployed control). Tsinghua includes physics-based RC thermal networks. Li Auto uses AI agents for quantitative evaluation and adopted multimodal agents. Tencent is described in the author’s voice as pre-university exploration. Remove the completed AMA4688 course project from current explorations. Skills include Rust, Nix, Gurobi, Building simulation, and OpenBIM software.
+
+## Personal voice and skills
+Tencent uses conversational paragraphs and clearly subjective reflections, not a bullet point. Describe indoor environment prediction/simulation without the repository name or deployment claims. Explain ZB202 as a Z Core laboratory at PolyU used for digital twin research; describe topology-based performance optimization with MOOSAS as ongoing work. Skills show concrete methods rather than DS/OR labels. Group programming languages and separate Linux/NixOS as an exploration interest. Use “Other NIST simulation tools” without inventing individual tools.

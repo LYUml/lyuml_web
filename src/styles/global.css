@@ -32,3 +32,5 @@
 .hero-domains span{white-space:nowrap}
 .hero-bottom{justify-content:flex-end}
 @media(max-width:760px){.interest-fields{font-size:24px;line-height:32px;gap:8px 16px}.interest-statement{margin:24px 0 32px}.hero-bottom{align-items:flex-end}}
+
+.experience-story{margin-top:24px;font-size:16px;line-height:28px;color:#b5b5b5}.experience-story p+p{margin-top:16px}.skill-note{font-size:14px;line-height:24px;color:var(--muted);margin-top:24px}
