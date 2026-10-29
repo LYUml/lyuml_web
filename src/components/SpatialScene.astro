@@ -10,7 +10,7 @@ if (canvas) {
  if (ctx) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const small = matchMedia('(max-width: 760px)');
-  let w=0,h=0,t=0,frame=0,visible=true,pointer=0;
+  let w=0,h=0,t=0,frame=0,visible=true,pointer=0,left=0;
   const project=(x:number,y:number,z:number) => {
    const a=-0.5 + pointer*0.12;
    const xx=x*Math.cos(a)-z*Math.sin(a),zz=x*Math.sin(a)+z*Math.cos(a);
@@ -45,13 +45,13 @@ if (canvas) {
    for(let i=0;i<=100;i++){const a=i*Math.PI*2/100;orbit.push(project(Math.cos(a)*4.7,.25+Math.sin(a*2)*.65,Math.sin(a)*3.6));}
    ctx.beginPath();orbit.forEach((a,i)=>i?ctx.lineTo(a[0],a[1]):ctx.moveTo(a[0],a[1]));ctx.strokeStyle='rgba(137,186,255,.18)';ctx.stroke();
   };
-  const resize=()=>{const box=canvas.getBoundingClientRect();w=box.width;h=box.height;const d=Math.min(devicePixelRatio,2);canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0);draw();};
+  const resize=()=>{const box=canvas.getBoundingClientRect();w=box.width;h=box.height;left=box.left;const d=Math.min(devicePixelRatio,2);canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0);draw();};
   let last=0;
   const tick=(now:number)=>{frame=0;if(!visible||document.hidden||reduced.matches)return;if(now-last>(small.matches?65:32)){t+=Math.min((now-last)/1000,.1);last=now;draw();}frame=requestAnimationFrame(tick);};
   const start=()=>{if(!frame&&visible&&!document.hidden&&!reduced.matches){last=performance.now();frame=requestAnimationFrame(tick);}};
   new ResizeObserver(resize).observe(canvas);
   new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)start();else{cancelAnimationFrame(frame);frame=0;}}).observe(canvas);
-  canvas.parentElement?.addEventListener('pointermove',e=>{pointer=(e.clientX/canvas.getBoundingClientRect().width-.5);if(reduced.matches)draw();});
+  canvas.parentElement?.addEventListener('pointermove',e=>{pointer=Math.max(-.5,Math.min(.5,(e.clientX-left)/w-.5));if(reduced.matches)draw();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else start();});
   reduced.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;draw();start();});
  }
