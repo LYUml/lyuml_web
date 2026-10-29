@@ -19,3 +19,6 @@ Prominent Data science / Operations research / AI interests sit directly with Bu
 
 ## Personal voice and skills
 Tencent uses conversational paragraphs and clearly subjective reflections, not a bullet point. Describe indoor environment prediction/simulation without the repository name or deployment claims. Explain ZB202 as a Z Core laboratory at PolyU used for digital twin research; describe topology-based performance optimization with MOOSAS as ongoing work. Skills show concrete methods rather than DS/OR labels. Group programming languages and separate Linux/NixOS as an exploration interest. Use “Other NIST simulation tools” without inventing individual tools.
+
+## Experience markers
+Use original decorative SVG topic illustrations instead of institution logos or initials. Stable icon kinds in profile data map to intelligent building control, heat/airflow, agent evaluation, parametric geometry and exploration. All share a 32-unit viewBox, 1.5-unit strokes and the blue accent. Hide decorative markers from assistive technology; institution text remains the accessible identifier.

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SpatialScene from '../components/SpatialScene.astro';
+import ExperienceIcon from '../components/ExperienceIcon.astro';
 import { experience, awards, skills } from '../data/profile';
 const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 ---
@@ -20,8 +21,8 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 </section>
 <section id="experience" class="section experience-section">
  <div class="section-heading reveal"><div><p class="eyebrow">Where I’ve been</p><h2>Ideas meet<br/>the real world.</h2></div><p class="section-description">Across buildings, simulation, and AI.<br/>A few places where I’ve put curiosity to work.</p></div>
- <div class="experience-list">{experience.map((item,i)=><details class="experience reveal" open={item.open}>
-  <summary><span class="org-mark" data-variant={i}>{i===0?'P':i===1||i===3?'T':i===2?'Li':'腾'}</span><span class="experience-title"><span class="org-name">{item.org}</span><span class="role">{item.role}</span></span><span class="experience-time">{item.time}</span><span class="expand-icon" aria-hidden="true"></span></summary>
+ <div class="experience-list">{experience.map(item=><details class="experience reveal" open={item.open}>
+  <summary><ExperienceIcon kind={item.icon} /><span class="experience-title"><span class="org-name">{item.org}</span><span class="role">{item.role}</span></span><span class="experience-time">{item.time}</span><span class="expand-icon" aria-hidden="true"></span></summary>
   <div class="experience-body"><span class="work-category">{item.category}</span><h3>{item.title}</h3>{item.supervisor&&<p class="supervisor">Working with {item.supervisor}</p>}{item.story&&<div class="experience-story">{item.story.map(paragraph=><p>{paragraph}</p>)}</div>}{item.points.length>0&&<ul>{item.points.map(point=><li>{point}</li>)}</ul>}{item.tags.length>0&&<div class="tags">{item.tags.map(tag=><span>{tag}</span>)}</div>}</div>
  </details>)}</div>
 </section>
