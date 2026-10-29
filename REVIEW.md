@@ -19,9 +19,23 @@ Open http://127.0.0.1:4321/ while the local development server is running. Resta
 - Local homepage HTTP 200.
 - Desktop homepage opened in Chrome and visually inspected; introduction, floating navigation, spatial drawing and visible topic line rendered correctly.
 
-## Still to verify
+## Browser verification completed
 
-Browser automation through the in-app browser was unavailable. Native Chrome inspection succeeded for the desktop homepage, then macOS locked. Mobile visual inspection, disclosure/menu interaction, keyboard navigation and runtime reduced-motion checks are pending manual unlock. Do not report these as passed.
+Chrome browser access recovered after the initial lock interruption.
+
+- Desktop homepage and lower sections were visually inspected, including exploration diagrams, education, awards, skills, music and sports.
+- Responsive viewports checked: 320×740, 390×844, 768×1024, and 1440×900, plus the original wide desktop window.
+- At 320, 390, 768, and 1440 widths, document scrollWidth equals clientWidth: no horizontal page overflow.
+- Native experience disclosure: Li Auto expands with a click and collapses with Space.
+- Mobile menu: Enter opens it, focus starts on Experience, Shift+Tab reaches the toggle, a second Shift+Tab wraps to the last link, Escape closes it and restores toggle focus. Navigation to About closes the panel and updates the hash.
+- Closed menu exposes normal page content; open menu accessibility snapshot contains only navigation, confirming background isolation.
+- Fixed a 24px offset that left a strip of page visible below the full-screen menu. Verified menu rectangle is x=0, y=0, width=390, height=844 at the matching viewport.
+- Fixed the name overflowing at 320px by reducing the heading to the next appropriate type-scale step (60px). Visually rechecked the entire name and contact text.
+- Browser console inspection returned no errors or warnings.
+
+## Verification limits
+
+Reduced-motion CSS and animation stop conditions were inspected in source. Runtime OS/media-preference emulation was not performed. No GitHub deployment or live social-card crawler test has been performed; this is a local review version.
 
 ## Follow-up content
 
