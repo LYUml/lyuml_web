@@ -22,3 +22,6 @@ Tencent uses conversational paragraphs and clearly subjective reflections, not a
 
 ## Experience markers
 Use original decorative SVG topic illustrations instead of institution logos or initials. Stable icon kinds in profile data map to intelligent building control, heat/airflow, agent evaluation, parametric geometry and exploration. All share a 32-unit viewBox, 1.5-unit strokes and the blue accent. Hide decorative markers from assistive technology; institution text remains the accessible identifier.
+
+## Open composition with selective boundaries (approved)
+Reduce repeated enclosing panels: experiences use thin horizontal dividers, plain tags and unboxed topic illustrations; skill columns and personal interests remain open. Keep a subtle full border on the education block and on exploration image areas only, not around the combined image and description. Short accent strokes introduce skill groups and personal themes. The footer has one separating rule. Preserve floating navigation and CTA boundaries for interaction. Exploration and life visuals have staggered desktop placement, returning to a single-column mobile flow. Retain large readable typography and native disclosure; remove repetitive section entrance motion while preserving the hero scene and tagline reveal.

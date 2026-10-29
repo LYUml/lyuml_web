@@ -40,3 +40,9 @@ Reduced-motion CSS and animation stop conditions were inspected in source. Runti
 ## Follow-up content
 
 User photos for music and sports, and detailed ZB202 visual refinement, are deliberately deferred by agreement. Current diagrams are labelled illustrative.
+
+## Open-layout refinement — 2026-10-30
+
+Approved direction: reduce repetitive boxed modules while retaining useful borders and separators. Experiences now use horizontal rules; exploration images and education retain subtle complete borders; skills and personal themes use open columns and short accent strokes. Theme icons and text tags are unboxed. Desktop exploration and life compositions are staggered; mobile stacks them. Repetitive whole-section reveals are disabled; hero and interaction feedback remain.
+
+Verified after refinement: type check has zero errors/warnings/hints; static build succeeds. Desktop 1440px, mobile 390px and 320px have equal document clientWidth/scrollWidth. Six awards and the hero canvas remain present. Native experience Enter/Space expand and collapse works. Mobile Enter opens navigation and Escape closes it. Desktop experience and exploration and mobile experience/diagram layouts were visually inspected. No copy or privacy scope changed. Local review only; not pushed.

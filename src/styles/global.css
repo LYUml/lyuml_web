@@ -36,3 +36,56 @@
 .experience-story{margin-top:24px;font-size:16px;line-height:28px;color:#b5b5b5}.experience-story p+p{margin-top:16px}.skill-note{font-size:14px;line-height:24px;color:var(--muted);margin-top:24px}
 
 .org-mark{color:var(--blue);border-color:#313131;background:#131313;transition:color 300ms var(--curve),border-color 300ms var(--curve)}.org-mark svg{width:28px;height:28px;flex:none}.experience[open] .org-mark,.experience summary:hover .org-mark,.experience summary:focus-visible .org-mark{color:#d6e6ff;border-color:#637b9d}@media(max-width:760px){.org-mark svg{width:24px;height:24px}}
+
+/* Open composition with selective boundaries for grouping and interaction. */
+.experience-list{gap:0}
+.experience::before{content:"";display:block;height:1px;background:var(--line)}
+.experience,.experience[open]{border:0;border-radius:0;background:transparent}
+.experience summary{padding:24px 0;gap:24px}
+.experience-body{margin-left:72px;padding:0 64px 40px 0;max-width:900px}
+.org-mark{border:0;border-radius:0;background:transparent;transition:color 300ms var(--curve)}
+.experience[open] .org-mark,.experience summary:hover .org-mark,.experience summary:focus-visible .org-mark{border:0;color:#d6e6ff}
+.tags{gap:8px 24px}.tags span{border:0;border-radius:0;padding:0;color:var(--muted)}
+.exploration-grid{grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+.exploration-card{border:0;border-radius:0;background:transparent;overflow:visible}
+.exploration-card:nth-child(2){margin-top:96px}
+.work-visual{height:320px;background:#131313;border:1px solid var(--line);border-radius:16px}
+.visual-label{left:16px;right:16px;bottom:16px}
+.work-copy{padding:24px 0 0}
+.work-copy>p:not(.work-category){max-width:480px}
+.background-grid{gap:80px}
+.education{padding:32px;border:1px solid var(--line);border-radius:16px;background:transparent}
+.education h3{font-size:36px;line-height:40px}
+.education-bottom{margin-top:32px;justify-content:flex-start;gap:32px}
+.top-percent{padding:0;background:transparent;border-radius:0}
+.skills-grid{gap:32px}
+.skill-group{padding:0;border:0;border-radius:0}
+.skill-group::before{content:"";display:block;width:32px;height:2px;background:var(--blue);opacity:.55;margin-bottom:24px}
+.life-grid{gap:80px;align-items:start}
+.life-card{padding:0;border:0;border-radius:0;overflow:visible}
+.life-card:nth-child(2){margin-top:64px}
+.music-art{justify-content:flex-start}
+.sport-art{justify-content:flex-start}
+.sport-art svg{max-width:400px}
+.life-card .work-category::before{content:"";display:inline-block;width:32px;height:1px;background:var(--blue);margin-right:12px;vertical-align:middle}
+.footer{border-top:1px solid var(--line)}
+.reveal,.reveal.is-visible{transition:none;opacity:1;transform:none}
+@media(prefers-reduced-motion:no-preference){.reveal[data-reveal-ready]:not(.is-visible){opacity:1;transform:none}}
+@media(max-width:1000px){.background-grid,.life-grid{gap:48px}.exploration-grid{gap:32px}.experience-body{padding-right:24px}.education h3{font-size:30px;line-height:36px}}
+@media(max-width:760px){
+ .experience-list{gap:0}
+ .experience summary{padding:24px 0;gap:12px}
+ .experience-body{margin-left:0;padding:0 0 32px}
+ .exploration-grid,.life-grid{grid-template-columns:1fr;gap:64px}
+ .exploration-card:nth-child(2),.life-card:nth-child(2){margin-top:0}
+ .work-visual{height:240px}
+ .work-copy{padding:24px 0 0}
+ .background-grid{gap:48px}
+ .education{padding:24px}
+ .education h3{font-size:24px;line-height:32px}
+ .education-bottom{margin-top:32px}
+ .skills-grid{gap:32px 24px}
+ .skill-group{padding:0}
+ .life-card{padding:0}
+ .tags{gap:8px 16px}
+}
