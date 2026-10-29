@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SpatialScene from '../components/SpatialScene.astro';
 import { experience, awards, skills } from '../data/profile';
+const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 ---
 <Layout>
 <header class="site-header">
@@ -45,7 +46,7 @@ import { experience, awards, skills } from '../data/profile';
  </div></section>
 <section id="contact" class="section contact-section reveal"><p class="eyebrow">Keep the conversation going</p><h2>Good things start<br/>with a hello<span>.</span></h2><a class="email-link" href="mailto:mingliang.lv@connect.polyu.hk">mingliang.lv@connect.polyu.hk <span aria-hidden="true">↗</span></a><a class="github-link" href="https://github.com/LYUml" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a></section>
 </main>
-<footer class="section footer"><a class="wordmark" href="#home" aria-label="Back to top">ml<span>.</span></a><p>© {new Date().getUTCFullYear()} Mingliang Lyu</p><div><a href={`${import.meta.env.BASE_URL}privacy/`}>Privacy</a><a href="#home">Back to top ↑</a></div></footer>
+<footer class="section footer"><a class="wordmark" href="#home" aria-label="Back to top">ml<span>.</span></a><p>© {new Date().getUTCFullYear()} Mingliang Lyu</p><div><a href={`${base}privacy/`}>Privacy</a><a href="#home">Back to top ↑</a></div></footer>
 <script>
 const menu=document.querySelector<HTMLButtonElement>('.menu-toggle');
 const links=document.querySelector<HTMLElement>('#nav-links');
