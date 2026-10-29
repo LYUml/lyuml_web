@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SpatialScene from '../components/SpatialScene.astro';
+import { experience, awards, skills } from '../data/profile';
+---
+<Layout>
+<header class="site-header">
+ <a class="wordmark" href="#home" aria-label="Mingliang Lyu home">ml<span>.</span></a>
+ <nav aria-label="Main navigation">
+  <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
+  <div id="nav-links" class="nav-links"><a href="#experience">Experience</a><a href="#exploring">Exploring</a><a href="#about">About</a><a href="#contact" class="nav-contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
+ </nav>
+</header>
+<main id="main">
+<section id="home" class="hero section">
+ <div class="hero-top"><span class="location"><span class="location-dot"></span>Hong Kong / Beijing</span><span class="hero-note">Curious by nature. Building by choice.</span></div>
+ <div class="hero-grid"><div class="hero-copy"><p class="intro">Hi, I’m</p><h1>Mingliang<br/>Lyu<span class="name-dot">.</span></h1><h2>Exploring intelligence<br/>in the built world.</h2><p class="hero-description">I’m interested in how data science, operations research, and AI can help us understand and improve complex systems, especially in the built environment.</p><a class="button" href="#experience">Explore my experience <span aria-hidden="true">↗</span></a></div><SpatialScene /></div>
+ <div class="hero-bottom"><p>Building simulation <span>·</span> Digital twins <span>·</span> AI agents</p><a href="#experience" class="scroll-link">A little further down <span aria-hidden="true">↓</span></a></div>
+</section>
+<section id="experience" class="section experience-section">
+ <div class="section-heading reveal"><div><p class="eyebrow">Where I’ve been</p><h2>Ideas meet<br/>the real world.</h2></div><p class="section-description">Across buildings, simulation, and AI.<br/>A few places where I’ve put curiosity to work.</p></div>
+ <div class="experience-list">{experience.map((item,i)=><details class="experience reveal" open={item.open}>
+  <summary><span class="org-mark" data-variant={i}>{i===0?'P':i===1||i===3?'T':i===2?'Li':'腾'}</span><span class="experience-title"><span class="org-name">{item.org}</span><span class="role">{item.role}</span></span><span class="experience-time">{item.time}</span><span class="expand-icon" aria-hidden="true"></span></summary>
+  <div class="experience-body"><span class="work-category">{item.category}</span><h3>{item.title}</h3>{item.supervisor&&<p class="supervisor">Working with {item.supervisor}</p>}{item.points.length>0&&<ul>{item.points.map(point=><li>{point}</li>)}</ul>}{item.tags.length>0&&<div class="tags">{item.tags.map(tag=><span>{tag}</span>)}</div>}</div>
+ </details>)}</div>
+</section>
+<section class="statement section" aria-label="Personal perspective"><p>{'Understand the system. Explore what it could become.'.split(' ').map(word=><span class="reveal-word">{word} </span>)}</p><span class="statement-caption">Data to insight. Models to decisions.</span></section>
+<section id="exploring" class="section exploring-section">
+ <div class="section-heading reveal"><div><p class="eyebrow">On my desk</p><h2>Still exploring.</h2></div><p class="section-description">A closer look at what I’m working on.<br/>Questions in progress, with room to grow.</p></div>
+ <div class="exploration-grid">
+  <article class="exploration-card reveal"><div class="work-visual room-visual" aria-hidden="true"><div class="room"><div class="room-floor"></div><div class="room-wall wall-one"></div><div class="room-wall wall-two"></div><div class="room-table"></div><div class="room-sensor"><span></span></div></div><span class="visual-label">Spatial study · Illustrative</span></div><div class="work-copy"><p class="work-category">Digital twins / PolyU</p><h3>ZB202, connected.</h3><p>Bringing spatial information, IoT sensor data, and a browser interface together in a digital representation of a real room.</p><span class="status"><span></span>Currently developing</span></div></article>
+  <article class="exploration-card reveal"><div class="work-visual airflow-visual" aria-hidden="true"><svg viewBox="0 0 500 290" fill="none"><g stroke="#89baff" stroke-opacity=".4"><path d="M105 90H395V210H105Z M205 90V210 M305 90V210 M105 150H395"/><path d="M105 90L135 65H425V185L395 210 M395 90L425 65 M205 90L235 65 M305 90L335 65"/></g><g class="air-paths" stroke="#b8d7ff" stroke-width="2"><path d="M45 120C105 70 140 170 205 120S320 170 365 120S420 100 460 115"/><path d="M45 170C105 120 140 220 205 170S320 220 365 170S420 150 460 165"/></g><g fill="#b8d7ff"><circle cx="155" cy="120" r="4"/><circle cx="255" cy="170" r="4"/><circle cx="355" cy="120" r="4"/></g></svg><span class="visual-label">Thermal & airflow study · Illustrative</span></div><div class="work-copy"><p class="work-category">Building simulation / Tsinghua</p><h3>Heat, air, and everything between.</h3><p>Developing a coupled thermal and airflow workflow using MOOSAS and CONTAM, with multizone modelling and field measurement validation.</p><span class="status"><span></span>Research in progress</span></div></article>
+ </div>
+ <div class="course-note reveal"><span class="course-symbol" aria-hidden="true">∑</span><div><p class="work-category">An applied mathematics thread</p><h3>Making decisions under uncertainty.</h3><p>For AMA4688, I developed a Monte Carlo based optimization model for PV generation, grid purchasing, and battery dispatch, using historical weather data to explore operating costs.</p></div></div>
+</section>
+<section id="about" class="section about-section">
+ <div class="section-heading reveal"><div><p class="eyebrow">A bit of background</p><h2>Foundations.<br/>And forward motion.</h2></div><p class="section-description">An engineering education.<br/>An applied mathematics perspective.</p></div>
+ <div class="background-grid"><article class="education reveal"><span class="work-category">Education</span><h3>The Hong Kong<br/>Polytechnic University</h3><p>BEng (Hons) in Building Sciences and Engineering</p><p class="muted">Minor in Applied Mathematics</p><div class="education-bottom"><span>2024 — Present</span><span class="top-percent">Top 5%</span></div></article>
+ <div class="awards reveal"><h3>Recognition</h3>{awards.map(a=><div class="award"><span class="award-year">{a.year}</span><div><h4>{a.name}</h4><p>{a.detail}</p></div></div>)}</div></div>
+ <div id="skills" class="skills-section reveal"><div class="skills-heading"><h3>Tools I think & build with.</h3><p>From data and models to spaces and systems.</p></div><div class="skills-grid">{skills.map(group=><div class="skill-group"><h4>{group.title}</h4><div>{group.items.map(item=><span>{item}</span>)}</div></div>)}</div></div>
+</section>
+<section class="section life-section" id="life"><div class="section-heading reveal"><div><p class="eyebrow">Away from the desk</p><h2>There’s more<br/>to the story.</h2></div><p class="section-description">Sometimes on stage.<br/>Sometimes out on the court.</p></div><div class="life-grid">
+ <article class="life-card music-card reveal"><div class="music-art" aria-hidden="true">{Array.from({length:27},(_,i)=><span style={`--bar-height:${[24,40,64,32,80,48,96,64,40][i%9]}px;--delay:${i*40}ms`}></span>)}</div><div><span class="work-category">Music</span><h3>Keys. Strings. Live stages.</h3><p>Piano, with a DipABRSM along the way. Bass guitar, a band, and multiple livehouse performances.</p><div class="tags"><span>Piano</span><span>Bass</span><span>Live music</span></div></div></article>
+ <article class="life-card sport-card reveal"><div class="sport-art" aria-hidden="true"><svg viewBox="0 0 400 190" fill="none"><g stroke="#89baff" stroke-opacity=".6"><rect x="45" y="25" width="310" height="140" rx="70"/><rect x="57" y="37" width="286" height="116" rx="58"/><rect x="69" y="49" width="262" height="92" rx="46"/><rect x="81" y="61" width="238" height="68" rx="34"/><path d="M200 25V165"/></g><circle cx="262" cy="43" r="5" fill="#c2dcff"/></svg></div><div><span class="work-category">Movement</span><h3>Always in motion.</h3><p>Basketball and running these days, with a background in formal long jump and baseball training.</p><div class="tags"><span>Basketball</span><span>Running</span><span>Long jump</span><span>Baseball</span></div></div></article>
+ </div></section>
+<section id="contact" class="section contact-section reveal"><p class="eyebrow">Keep the conversation going</p><h2>Good things start<br/>with a hello<span>.</span></h2><a class="email-link" href="mailto:mingliang.lv@connect.polyu.hk">mingliang.lv@connect.polyu.hk <span aria-hidden="true">↗</span></a><a class="github-link" href="https://github.com/LYUml" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a></section>
+</main>
+<footer class="section footer"><a class="wordmark" href="#home" aria-label="Back to top">ml<span>.</span></a><p>© {new Date().getUTCFullYear()} Mingliang Lyu</p><div><a href={`${import.meta.env.BASE_URL}privacy/`}>Privacy</a><a href="#home">Back to top ↑</a></div></footer>
+<script>
+const menu=document.querySelector<HTMLButtonElement>('.menu-toggle');
+const links=document.querySelector<HTMLElement>('#nav-links');
+const closeMenu=()=>{menu?.setAttribute('aria-expanded','false');links?.classList.remove('is-open');document.body.classList.remove('menu-open');};
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));links?.classList.toggle('is-open',open);document.body.classList.toggle('menu-open',open);});
+links?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu?.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus();}});
+matchMedia('(min-width: 761px)').addEventListener('change',e=>{if(e.matches)closeMenu();});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal,.reveal-word').forEach(el=>observer.observe(el));
+const navLinks=Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-links a'));
+const sections=['experience','exploring','about','contact'].map(id=>document.getElementById(id)).filter((x):x is HTMLElement=>!!x);
+const navObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>{const active=a.hash===`#${entry.target.id}`;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}});},{rootMargin:'-15% 0px -55% 0px'});
+sections.forEach(section=>navObserver.observe(section));
+</script>
+</Layout>
