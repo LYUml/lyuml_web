@@ -10,3 +10,6 @@ Order: introduction → direction-led experience → current explorations → ed
 
 ## Deferred refinement
 ZB202 model/rendering will be discussed separately. Current scene is a small procedural canvas illustration, without a 3D dependency, sensor connection, or operational controls. Music and sport sections await user photos.
+
+## Readability update
+Body and skill text use 16px with 24–28px line height. Supporting labels, dates, tags, and footer text use at least 14px with 20–24px line height, including mobile. Keep the existing large display headings. Skill groups stack on screens up to 380px to preserve readable text.
