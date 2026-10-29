@@ -25,4 +25,4 @@ Push to the intended GitHub repository’s `main` branch, then select GitHub Act
 
 ## Git history
 
-Use commit messages in the form `2026-10-29 brief description` for this implementation session.
+Write every commit message in English, using `YYYY-MM-DD Short English summary` with the date of work.
