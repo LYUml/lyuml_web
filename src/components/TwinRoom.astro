@@ -37,6 +37,6 @@ const sensors=[[0,155,74],[260,220,82],[140,120,126],[235,28,30]];
   {sensors.map(([x,y,z])=><path d={edges([[x,y,z],[263,33,23]])}/>)}
  </g>
  <g class="sensor-points" fill="currentColor">{sensors.map(([x,y,z])=>{const [cx,cy]=project(x,y,z);return <g><circle cx={cx} cy={cy} r="3"/><circle cx={cx} cy={cy} r="7" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width=".8"/></g>})}</g>
- {!digital&&<g fill="currentColor" font-family="Manrope,Arial,sans-serif" font-size="9">{sensors.map(([x,y,z],i)=>{const [cx,cy]=project(x,y,z);return <text x={cx+(i===1?-8:10)} y={cy-10} text-anchor={i===1?'end':'start'}>{['T / RH','CO₂','Presence','Gateway'][i]}</text>})}</g>}
+ {!digital&&<g fill="currentColor" font-family="Manrope,Arial,sans-serif" font-size="9">{sensors.map(([x,y,z],i)=>{const [cx,cy]=project(x,y,z);return <text x={cx+(i===1?-8:10)} y={cy+(i===3?16:-10)} stroke="#000" stroke-width="2.5" paint-order="stroke" text-anchor={i===1?'end':'start'}>{['T / RH','CO₂','Presence','Gateway'][i]}</text>})}</g>}
  {digital&&<g stroke="currentColor" stroke-opacity=".4" stroke-dasharray="2 5"><path d={edges([[0,0,120],[300,0,120],[300,220,120]])}/><path d={edges([[300,0],[300,0,120]])}/></g>}
 </svg>
