@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [main, codex/kinetic-grid]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
