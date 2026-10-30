@@ -7,14 +7,14 @@ export const experience = [
 ];
 export const awards = [
  {year:'2026',name:"FCE Award for Tomorrow’s Leaders",detail:'The Hong Kong Polytechnic University'},
- {year:'2026',name:'MCM / ICM',detail:'Meritorious Winner'},
+ {year:'2026',name:'Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling (MCM/ICM)',detail:'Meritorious Winner'},
  {year:'2025',name:'FCE Dean’s List',detail:'The Hong Kong Polytechnic University'},
- {year:'2023',name:'International Mathematical Modeling Challenge',detail:'Finalist'},
- {year:'2021',name:'Chinese Physics Olympiad',detail:'Provincial First Prize'},
- {year:'2021',name:'Chinese Mathematics Olympiad',detail:'Provincial Second Prize'}
+ {year:'2023',name:'International Mathematical Modeling Challenge (IMMC)',detail:'Finalist'},
+ {year:'2021',name:'Chinese Physics Olympiad (CPhO)',detail:'Provincial First Prize'},
+ {year:'2021',name:'Chinese Mathematics Olympiad (CMO)',detail:'Provincial Second Prize'}
 ];
 export const skills: {title: string; items: string[]; note?: string}[] = [
- {title:'Programming & systems',items:['Python · R · MATLAB','C++ · Rust','Nix'],note:'Also exploring Linux, especially NixOS.'},
+ {title:'Programming & systems',items:['Python · C++','R · MATLAB','Rust','Nix'],note:'Also exploring Linux, especially NixOS.'},
  {title:'Data & optimization',items:['Time series forecasting','Predictive modelling','Quantitative evaluation','Mathematical optimization','Gurobi']},
  {title:'Building simulation',items:['MOOSAS','CONTAM','EnergyPlus','Other NIST simulation tools']},
  {title:'Design & making',items:['Revit','AutoCAD','SketchUp','Blender','LaTeX','OpenBIM software']}
