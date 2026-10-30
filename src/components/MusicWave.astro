@@ -1,0 +1,9 @@
+<svg class="music-wave" viewBox="0 0 600 320" fill="none" aria-hidden="true">
+ <g class="sound-lines" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  {Array.from({length:49},(_,i)=>{
+   const envelope=Math.sin(Math.PI*(i+1)/50);
+   const height=8+envelope*(24+Math.abs(Math.sin(i*.73)*Math.cos(i*.29))*100);
+   return <path d={`M${36+i*11} ${160-height/2}V${160+height/2}`}/>;
+  })}
+ </g>
+</svg>
