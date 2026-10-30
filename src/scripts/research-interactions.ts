@@ -61,7 +61,10 @@ if(sensorDemo){
   place();cardAnimation?.cancel();
   if(!reduced())cardAnimation=info.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:280,easing:'cubic-bezier(.22,1,.36,1)'});
  };
- const tour=idleTour(sensorDemo,()=>select((current+1)%demoSensors.length),()=>{});
+ const networkAnimations=Array.from(sensorDemo.querySelectorAll<SVGPathElement>('.twin-network path')).map((path,i)=>{
+  const animation=path.animate([{strokeDashoffset:'0'},{strokeDashoffset:'-80'}],{duration:3600+i*180,iterations:Infinity,easing:'linear'});animation.pause();return animation;
+ });
+ const tour=idleTour(sensorDemo,()=>select((current+1)%demoSensors.length),motion=>networkAnimations.forEach(animation=>motion?animation.play():animation.pause()));
  const measure=()=>{bounds=undefined;place();};new ResizeObserver(measure).observe(stage);
  stage.addEventListener('pointerenter',()=>{bounds=stage.getBoundingClientRect();});
  window.addEventListener('scroll',()=>{bounds=undefined;},{passive:true});

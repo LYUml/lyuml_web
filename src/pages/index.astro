@@ -38,7 +38,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
   <div class="experience-body"><span class="work-category">{item.category}</span><h3>{item.title}</h3>{item.supervisor&&<p class="supervisor">Working with {item.supervisor}</p>}{item.story&&<div class="experience-story">{item.story.map(paragraph=><p>{paragraph}</p>)}</div>}{item.points.length>0&&<ul>{item.points.map(point=><li>{point}</li>)}</ul>}{item.tags.length>0&&<div class="tags">{item.tags.map(tag=><span>{tag}</span>)}</div>}</div>
  </details>)}</div>
 </section>
-<section class="statement section" aria-label="Personal perspective"><p>{'Understand the system. Explore what it could become.'.split(' ').map(word=><span class="reveal-word">{word} </span>)}</p><span class="statement-caption">Data to insight. Models to decisions.</span></section>
+
 <section id="exploring" class="section exploring-section">
  <div class="section-heading reveal"><div><p class="eyebrow">On my desk</p><h2>Still exploring.</h2></div><p class="section-description">A closer look at what I’m working on.<br/>Questions in progress, with room to grow.</p></div>
  <div class="exploration-grid">

@@ -34,6 +34,7 @@ old,new=Copy(),Copy();old.feed(baseline.read_text());new.feed((root/'dist/index.
 alltext=compact(''.join(new.text))
 # Explicit homepage revisions requested by the author on 2026-10-30.
 retired_home_copy={
+    'Understand the system. Explore what it could become.',
     'Good things startwith a hello.',
     'Good things start with a hello.',
     'You can call me Eric.',
