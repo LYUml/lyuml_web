@@ -37,3 +37,6 @@ html[data-kinetic-motion=reduce]{scroll-behavior:auto}.kinetic.is-reduced-motion
 .kinetic .exploration-card>.work-copy{margin:0 0 28px;padding:24px 0;border-top:1px solid var(--line)}
 @media(max-width:760px){.kinetic .exploration-card>.work-copy{margin-bottom:20px;padding-top:20px}}
 .kinetic .sensor-info{pointer-events:none}
+/* Align the footer frame with the main content frame. */
+.kinetic .footer.section{width:calc(100% - 32px);max-width:1768px;margin-inline:auto}
+@media(max-width:760px){.kinetic .footer.section{width:calc(100% - 24px)}}
