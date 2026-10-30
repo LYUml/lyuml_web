@@ -32,8 +32,15 @@ baseline=root/'.qa/main-baseline.html'
 if not baseline.exists():raise SystemExit('Missing pre-redesign main build in .qa/main-baseline.html')
 old,new=Copy(),Copy();old.feed(baseline.read_text());new.feed((root/'dist/index.html').read_text())
 alltext=compact(''.join(new.text))
-missing=[text for text in old.blocks if compact(text) not in alltext]
+# Explicit homepage revisions requested by the author on 2026-10-30.
+retired_home_copy={
+    'You can call me Eric.',
+    'Exploring intelligence in the built world.',
+    'and how they help us understand and improve complex systems, especially in the built environment.',
+}
+unchanged=[text for text in old.blocks if text not in retired_home_copy]
+missing=[text for text in unchanged if compact(text) not in alltext]
 profile=subprocess.check_output(['git','show','main:src/data/profile.ts'],cwd=root)
 assert profile==(root/'src/data/profile.ts').read_bytes(),'Profile data differs from main'
 assert not missing,'Missing or changed prose: '+repr(missing)
-print(f'PASS: {len(old.blocks)} original rendered prose blocks retained; profile.ts byte-identical to main.')
+print(f'PASS: {len(unchanged)} unchanged original prose blocks retained (3 approved homepage revisions); profile.ts byte-identical to main.')

@@ -19,7 +19,7 @@ if(heading){
  const sizing=new ResizeObserver(fit);sizing.observe(band);document.fonts.load('100px Anton').then(fit);fit();
  if(!location.hash||location.hash==='#home'){
   finite(heading,[{transform:'translateY(110%) skewY(3deg)'},{transform:'translateY(0) skewY(0)'}],1050,80);
-  document.querySelectorAll('.hero-introduction>div,.hero-bottom,.field-caption,.hero-domains').forEach((el,i)=>finite(el,[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],750,200+i*75));
+  document.querySelectorAll('.hero-introduction>div,.hero-bottom').forEach((el,i)=>finite(el,[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],750,200+i*75));
  }
 }
 const stage=document.querySelector<HTMLElement>('.line-field');

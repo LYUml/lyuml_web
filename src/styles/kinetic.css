@@ -22,3 +22,8 @@ html[data-kinetic-motion=reduce]{scroll-behavior:auto}.kinetic.is-reduced-motion
 /* Keep inherited topic illustrations within the monochrome palette. */
 .kinetic .org-mark svg{color:currentColor}
 @media(max-width:760px){.kinetic .email-link{font-family:Manrope,Arial,sans-serif;font-size:16px;letter-spacing:-.025em;line-height:1.7}}
+
+/* Plain-language introduction: identity and interests belong together. */
+.kinetic .hero-personal{justify-content:flex-start;gap:20px}.kinetic .hero-personal .name-note{font-size:clamp(30px,3.3vw,48px);margin:0;line-height:1.2}.kinetic .personal-description{font-size:16px;line-height:1.8;color:#cfcec6;max-width:570px;margin:0}.kinetic .hero-direction{display:flex;flex-direction:column;justify-content:center}.kinetic .hero-direction h2{margin-bottom:24px}.kinetic .hero-topics{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px;margin:0;font-size:15px;line-height:1.6}.kinetic .hero-topics span{white-space:nowrap}
+@media(max-width:760px){.kinetic .hero-personal{gap:20px}.kinetic .hero-personal .name-note{font-size:32px}.kinetic .personal-description{font-size:15px;line-height:1.85}.kinetic .hero-topics{font-size:14px;gap:8px 20px}}
+.kinetic .hero-bottom{gap:0}.kinetic .hero-topics span{color:inherit;margin:0}.kinetic .hero-direction h2{margin-top:0}
