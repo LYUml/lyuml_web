@@ -1,10 +1,14 @@
 export {};
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const requestedReduction=new URLSearchParams(location.search).get('motion')==='reduce';
+const motionReduced=()=>reduced.matches||requestedReduction;
+const applyMotionPreference=()=>{document.body.classList.toggle('is-reduced-motion',motionReduced());document.documentElement.dataset.kineticMotion=motionReduced()?'reduce':'full';};
+applyMotionPreference();reduced.addEventListener('change',applyMotionPreference);
 const fine=matchMedia('(hover:hover) and (pointer:fine)');
 const curve='cubic-bezier(.22,1,.36,1)';
 const animations=new Set<Animation>();
 function finite(el:Element,frames:Keyframe[],duration=700,delay=0){
- if(reduced.matches)return;
+ if(motionReduced())return;
  const a=el.animate(frames,{duration,delay,easing:curve,fill:'both'});animations.add(a);
  a.finished.then(()=>{a.cancel();animations.delete(a);}).catch(()=>animations.delete(a));return a;
 }
@@ -43,15 +47,15 @@ if(stage){
    }
    canvas.dataset.frameTime=time.toFixed(2);
   };
-  const active=()=>visible&&!document.hidden&&!reduced.matches;
+  const active=()=>visible&&!document.hidden&&!motionReduced();
   const tick=(now:number)=>{frame=0;if(!active())return;if(now-last>=(width<600?60:32)){time+=Math.min((now-last)/1000,.1);last=now;px+=(targetX-px)*.12;py+=(targetY-py)*.12;strength+=(targetStrength-strength)*.08;draw();}frame=requestAnimationFrame(tick);};
   const sync=()=>{cancelAnimationFrame(frame);frame=0;if(active()){last=performance.now();frame=requestAnimationFrame(tick);canvas.dataset.state='running';}else{canvas.dataset.state='paused';if(width)draw();}};
   const size=()=>{const box=stage.getBoundingClientRect();bounds=box;width=box.width;height=box.height;const dpr=Math.min(devicePixelRatio,1.5);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);context.setTransform(dpr,0,0,dpr,0,0);draw();stage.classList.add('is-ready');sync();};
   new ResizeObserver(size).observe(stage);
   new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();},{threshold:0}).observe(stage);
   stage.addEventListener('pointerenter',()=>{bounds=stage.getBoundingClientRect();});
-  stage.addEventListener('pointermove',event=>{if(reduced.matches||!fine.matches)return;targetX=event.clientX-bounds.left;targetY=event.clientY-bounds.top;targetStrength=1;});
-  stage.addEventListener('pointerleave',()=>{targetStrength=0;});
+  stage.addEventListener('pointermove',event=>{if(motionReduced()||!fine.matches)return;targetX=event.clientX-bounds.left;targetY=event.clientY-bounds.top;targetStrength=1;canvas.dataset.pointerActive='true';});
+  stage.addEventListener('pointerleave',()=>{targetStrength=0;canvas.dataset.pointerActive='false';});
   document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);
   window.addEventListener('pagehide',()=>cancelAnimationFrame(frame),{once:true});
  }
@@ -81,7 +85,7 @@ function loop(groupEl:Element,el:Element,keyframes:Keyframe[],duration:number,de
  const a=el.animate(keyframes,{duration,delay,easing,iterations:Infinity});a.pause();
  let group=groups.get(groupEl);if(!group){group={animations:[],visible:false};groups.set(groupEl,group);loopsObserver.observe(groupEl);}group.animations.push(a);
 }
-function syncLoops(){groups.forEach(group=>group.animations.forEach(a=>{if(group.visible&&!document.hidden&&!reduced.matches)a.play();else{a.pause();if(reduced.matches)a.currentTime=0;}}));}
+function syncLoops(){groups.forEach(group=>group.animations.forEach(a=>{if(group.visible&&!document.hidden&&!motionReduced())a.play();else{a.pause();if(motionReduced())a.currentTime=0;}}));}
 const spatial=document.querySelector('.study-spatial');if(spatial){const upper=spatial.querySelector('.model-upper');if(upper)loop(spatial,upper,[{transform:'translateY(0)'},{transform:'translateY(-10px)'},{transform:'translateY(0)'}],6500);spatial.querySelectorAll('.sensor-points circle').forEach((el,i)=>loop(spatial,el,[{opacity:.25},{opacity:1},{opacity:.25}],2400,i*230));}
 const airflow=document.querySelector('.study-airflow');if(airflow){airflow.querySelectorAll<SVGPathElement>('.airflow-streams path').forEach((el,i)=>{el.style.strokeDasharray='12 9';loop(airflow,el,[{strokeDashoffset:'0'},{strokeDashoffset:'-126'}],7000,i*90,'linear');});}
 const music=document.querySelector('.instrument-drawing');if(music){music.querySelectorAll('.sound-lines path').forEach((el,i)=>loop(music,el,[{transform:'scaleY(.4)',opacity:.45},{transform:'scaleY(1)',opacity:1},{transform:'scaleY(.4)',opacity:.45}],1000+i%7*170,i*33));}

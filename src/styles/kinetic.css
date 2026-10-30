@@ -15,3 +15,10 @@ body.kinetic{--bg:#000;--surface:#000;--text:#f1eedc;--muted:#b8b7af;--blue:#f1e
 /* Reset inherited floating-navigation geometry from the original branch. */
 .kinetic .site-header{width:calc(100% - 32px)}.kinetic .site-header nav{position:static;inset:auto;transform:none}.kinetic .nav-links a{color:var(--text)}.kinetic .nav-links a:hover{color:#000}.kinetic .nav-contact span{padding-left:0}
 @media(max-width:760px){.kinetic .site-header{width:calc(100% - 24px)}}
+.kinetic .site-header{position:sticky;top:0}.kinetic .exploration-card,.kinetic .exploration-card:nth-child(2){display:block}.kinetic .work-visual{aspect-ratio:1000/380}.kinetic .work-copy{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1fr);gap:12px 48px;margin-top:24px}.kinetic .work-copy .work-category{grid-column:1/-1;margin:0}.kinetic .work-copy h3{grid-column:1;grid-row:2/4;margin:0}.kinetic .work-copy>p:not(.work-category){grid-column:2;grid-row:2}.kinetic .work-copy .status{grid-column:2;grid-row:3;margin-top:8px}
+html[data-kinetic-motion=reduce]{scroll-behavior:auto}.kinetic.is-reduced-motion *,.kinetic.is-reduced-motion *::before,.kinetic.is-reduced-motion *::after{animation:none!important;transition:none!important}.kinetic.is-reduced-motion .field-fallback{visibility:visible!important}.kinetic.is-reduced-motion .field-canvas{display:none}.kinetic.is-reduced-motion .reading-progress{display:none}.kinetic.is-reduced-motion .heading-clip{overflow:visible}
+@media(max-width:760px){.kinetic .work-visual{aspect-ratio:1000/530}.kinetic .work-copy{display:block;margin-top:20px}.kinetic .work-copy .work-category{margin-bottom:12px}.kinetic .work-copy h3{margin-bottom:20px}.kinetic .work-copy .status{margin-top:20px}.kinetic .site-header{top:0}}
+@media(min-width:761px){.kinetic .hero-field{height:clamp(260px,32svh,400px)}.kinetic .hero h1{line-height:1.08}}
+/* Keep inherited topic illustrations within the monochrome palette. */
+.kinetic .org-mark svg{color:currentColor}
+@media(max-width:760px){.kinetic .email-link{font-family:Manrope,Arial,sans-serif;font-size:16px;letter-spacing:-.025em;line-height:1.7}}
