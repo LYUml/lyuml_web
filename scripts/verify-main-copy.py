@@ -34,6 +34,8 @@ old,new=Copy(),Copy();old.feed(baseline.read_text());new.feed((root/'dist/index.
 alltext=compact(''.join(new.text))
 # Explicit homepage revisions requested by the author on 2026-10-30.
 retired_home_copy={
+    'Good things startwith a hello.',
+    'Good things start with a hello.',
     'You can call me Eric.',
     'Exploring intelligence in the built world.',
     'and how they help us understand and improve complex systems, especially in the built environment.',
