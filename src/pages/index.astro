@@ -1,4 +1,5 @@
 ---
+import ArrowUpRight from '../components/ArrowUpRight.astro';
 import Layout from '../layouts/Layout.astro';
 import LineField from '../components/LineField.astro';
 import AirflowDemo from '../components/AirflowDemo.astro';
@@ -17,7 +18,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
  <span class="header-location">Hong Kong / Beijing</span>
  <nav aria-label="Main navigation">
   <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
-  <div id="nav-links" class="nav-links"><a href="#experience">Experience</a><a href="#exploring">Exploring</a><a href="#about">About</a><a href="#contact" class="nav-contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
+  <div id="nav-links" class="nav-links"><a href="#experience">Experience</a><a href="#exploring">Exploring</a><a href="#about">About</a><a href="#contact" class="nav-contact">Let’s talk <span aria-hidden="true"><ArrowUpRight /></span></a></div>
  </nav>
 </header>
 <main id="main">
@@ -28,7 +29,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
   <div class="hero-personal"><p class="name-note">Hi, I’m Eric.</p><p class="personal-description">I’m a third-year undergraduate at The Hong Kong Polytechnic University, majoring in Building Science and Engineering.</p><p class="personal-description">But I’m most at home working with code, data, and mathematical models.</p></div>
   <div class="hero-direction"><h2>What I’m interested in</h2><p class="interest-fields"><span>Data science</span><span>Operations research</span><span>AI</span></p><p class="hero-description">I like using these methods to understand complex systems and make better decisions, especially in the built environment.</p></div>
  </div>
- <div class="hero-bottom"><p class="hero-note hero-topics"><span>Building simulation</span><span>Digital twins</span><span>AI agents</span><span class="topics-note">These are my current keywords.</span></p><a class="button" href="#experience">Explore my experience <span aria-hidden="true">↗</span></a></div>
+ <div class="hero-bottom"><p class="hero-note hero-topics"><span>Building simulation</span><span>Digital twins</span><span>AI agents</span><span class="topics-note">These are my current keywords.</span></p><a class="button" href="#experience">Explore my experience <span aria-hidden="true"><ArrowUpRight /></span></a></div>
  <a href="#experience" class="scroll-link">A little further down <span aria-hidden="true">↓</span></a>
 </section>
 <section id="experience" class="section experience-section">
@@ -56,7 +57,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
  <article class="life-card music-card reveal"><div class="music-art"><MusicWave /></div><div><span class="work-category">Music</span><h3>Keys. Strings. Live stages.</h3><p><span class="music-line">Piano, with a DipABRSM along the way.</span> <span class="music-line">Bass guitar, a band, and multiple livehouse performances.</span></p><div class="tags"><span>Piano</span><span>Bass</span><span>Live music</span></div></div></article>
  <article class="life-card sport-card reveal"><div class="sport-art" aria-hidden="true"><svg viewBox="0 0 400 190" fill="none"><g stroke="#89baff" stroke-opacity=".6"><rect x="45" y="25" width="310" height="140" rx="70"/><rect x="57" y="37" width="286" height="116" rx="58"/><rect x="69" y="49" width="262" height="92" rx="46"/><rect x="81" y="61" width="238" height="68" rx="34"/><path d="M200 25V165"/></g><path class="runner-route" d="M115 31 H285 A64 64 0 0 1 285 159 H115 A64 64 0 0 1 115 31 Z" stroke="none"/><circle class="runner-dot" cx="0" cy="0" r="5" fill="#c2dcff"/></svg></div><div><span class="work-category">Movement</span><h3>Always in motion.</h3><p>I used to play competitive baseball, but have since stepped away from competition. These days, I enjoy basketball and running.</p><div class="tags"><span>Basketball</span><span>Running</span><span>Baseball</span></div></div></article>
  </div></section>
-<section id="contact" class="section contact-section reveal"><p class="eyebrow">Keep the conversation going</p><h2>Lovely weather.<br/>Anyway, say hi<span>.</span></h2><a class="email-link" href="mailto:mingliang.lv@connect.polyu.hk">mingliang.lv@connect.polyu.hk <span aria-hidden="true">↗</span></a><a class="github-link" href="https://github.com/LYUml" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a><a class="github-link" href="https://xhslink.cn/o/A9EAViZNJSD" target="_blank" rel="noopener noreferrer">Find me on Rednote <span aria-hidden="true">↗</span></a></section>
+<section id="contact" class="section contact-section reveal"><p class="eyebrow">Keep the conversation going</p><h2>Lovely weather.<br/>Anyway, say hi<span>.</span></h2><a class="email-link" href="mailto:mingliang.lv@connect.polyu.hk">mingliang.lv@connect.polyu.hk <span aria-hidden="true"><ArrowUpRight /></span></a><a class="github-link" href="https://github.com/LYUml" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true"><ArrowUpRight /></span></a><a class="github-link" href="https://xhslink.cn/o/A9EAViZNJSD" target="_blank" rel="noopener noreferrer">Find me on Rednote <span aria-hidden="true"><ArrowUpRight /></span></a></section>
 </main>
 <footer class="section footer"><a class="wordmark" href="#home" aria-label="Back to top">ml<span>.</span></a><p>© {new Date().getUTCFullYear()} Mingliang Lyu</p><div><a href={`${base}privacy/`}>Privacy</a><a href="#home">Back to top ↑</a></div></footer>
 <script>

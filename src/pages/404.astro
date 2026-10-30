@@ -1,4 +1,5 @@
 ---
+import ArrowUpRight from '../components/ArrowUpRight.astro';
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout noindex title="Page not found — Mingliang Lyu"><main id="main" class="simple-page section"><p class="eyebrow">404 / A small detour</p><h1>A little outside<br/>the blueprint.</h1><p>This page could not be found. Head back to the homepage to explore my work and interests.</p><a class="button" href={import.meta.env.BASE_URL}>Back to home ↗</a></main></Layout>
+<Layout noindex title="Page not found — Mingliang Lyu"><main id="main" class="simple-page section"><p class="eyebrow">404 / A small detour</p><h1>A little outside<br/>the blueprint.</h1><p>This page could not be found. Head back to the homepage to explore my work and interests.</p><a class="button" href={import.meta.env.BASE_URL}>Back to home <span aria-hidden="true"><ArrowUpRight /></span></a></main></Layout>

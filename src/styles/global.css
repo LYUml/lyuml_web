@@ -91,3 +91,5 @@
 }
 
 .name-note{font-size:18px;line-height:28px;color:#b5b5b5;margin-top:16px}
+
+.arrow-up-right{display:inline-block;width:1em;height:1em;vertical-align:-.1em;flex:none}
