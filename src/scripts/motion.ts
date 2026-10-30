@@ -4,9 +4,8 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const fine = matchMedia('(hover: hover) and (pointer: fine)');
 const mobile = matchMedia('(max-width: 760px)');
 const curve = 'cubic-bezier(0.22, 1, 0.36, 1)';
-let paused = false;
 const finite = new Set<Animation>();
-const enabled = () => !reduced.matches && !paused;
+const enabled = () => !reduced.matches;
 function animate(el: Element, frames: Keyframe[], duration = 700, delay = 0) {
   if (!enabled()) return;
   const animation = el.animate(frames, {duration, delay, easing: curve, fill: 'both'});
@@ -161,17 +160,12 @@ function updateIndicator(){
 }
 document.addEventListener('navigation-active',()=>{cancelAnimationFrame(navFrame);navFrame=requestAnimationFrame(updateIndicator);});
 if(nav)new ResizeObserver(()=>{cancelAnimationFrame(navFrame);navFrame=requestAnimationFrame(updateIndicator);}).observe(nav);
-const toggle=document.querySelector<HTMLButtonElement>('.motion-toggle');
-const toggleLabel=toggle?.querySelector('.motion-toggle-label');
 function syncState(){
   root.dataset.motion=enabled()?'running':'paused';
-  if(toggle){toggle.hidden=reduced.matches;toggle.setAttribute('aria-pressed',String(paused));}
-  if(toggleLabel)toggleLabel.textContent=paused?'Resume motion':'Pause motion';
   if(!enabled()){for(const animation of finite)animation.cancel();finite.clear();pointerResets.forEach(reset=>reset());}
   airflow?.querySelectorAll<SVGPathElement>('.air-paths path').forEach(path=>path.style.strokeDasharray=reduced.matches?'none':'18 12');
   syncLoops();document.dispatchEvent(new CustomEvent('motion-preference',{detail:{paused:!enabled()}}));
 }
-toggle?.addEventListener('click',()=>{paused=!paused;syncState();});
 reduced.addEventListener('change',syncState);
 fine.addEventListener('change',()=>pointerResets.forEach(reset=>reset()));
 document.addEventListener('visibilitychange',syncLoops);

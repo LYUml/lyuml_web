@@ -18,4 +18,4 @@ Skills: frontend-design (composition), mengto/animation-systems via ui-skills CL
 
 Primary curve cubic-bezier(.22,1,.36,1); 16–32px entrances, 550–1000ms section choreography, 35–90ms local staggers. Linear timing is reserved for constant-speed illustrative paths and direct scroll progress. No scroll event polling. Pointer geometry is measured on entry, and writes are frame-batched. Infinite illustration animations pause offscreen and when the document is hidden. Canvas caps pixel density and lowers mobile cadence.
 
-Pause motion pauses ambient loops and the canvas, cancels finite entrances, and leaves content visible. No preference is stored. The operating system reduced-motion preference hides the unnecessary pause control, cancels motion, and keeps a readable static presentation. Non-JS content remains visible. No real telemetry or real audio is implied by the illustrative loops.
+The visible pause control was removed at the user’s request. The operating system reduced-motion preference cancels motion and keeps a readable static presentation. Non-JS content remains visible. No real telemetry or real audio is implied by the illustrative loops.

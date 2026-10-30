@@ -52,3 +52,8 @@ Verified after refinement: type check has zero errors/warnings/hints; static bui
 Added native Web Animations choreography, clipped hero and section headings, local illustration loops, pointer depth, animated navigation indicator, reading progress, and a global pause control. Details are in MOTION.md. This supersedes the earlier restrained-entrance direction by user request.
 
 Verified in the in-app browser: desktop 1440px and mobile 390px/320px have no horizontal document overflow; hero text remains fully visible after its entrance; mobile navigation opens and closes on link activation; Enter expands Li Auto; desktop exploration composition and moving airflow are visible; pause changes the page and canvas to paused, and resume restores motion. Console error inspection returned none. OS reduced-motion handling was inspected in source; OS preference switching was not exercised. No performance trace or physical-device profiling was performed. No push or publication.
+
+
+## Motion control removal — 2026-10-30
+
+Removed the floating pause button, its event handling and styles, and the extra mobile footer space reserved for it. Animations and OS reduced-motion handling remain. Type check and production build verified.

@@ -13,14 +13,6 @@
 .air-paths{opacity:.85}
 .music-art span{transform-origin:50% 50%}
 .runner-dot{transform:translate(262px,43px)}
-.motion-toggle{position:fixed;right:24px;bottom:24px;z-index:30;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #454545;border-radius:9999px;background:rgba(24,24,24,.92);color:#bdbdbd;font-size:14px;line-height:20px;transition:color 300ms var(--curve),transform 300ms var(--curve)}
-.motion-toggle[hidden],.menu-open .motion-toggle{display:none}
-.motion-toggle:hover{color:#fff;transform:translateY(-2px)}
-.motion-toggle-icon{width:12px;height:12px;position:relative;display:inline-block}
-.motion-toggle-icon::before,.motion-toggle-icon::after{content:'';position:absolute;top:1px;width:2px;height:10px;background:var(--blue)}
-.motion-toggle-icon::before{left:2px}.motion-toggle-icon::after{right:2px}
-.motion-toggle[aria-pressed=true] .motion-toggle-icon::before{left:3px;width:0;height:0;background:none;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:7px solid var(--blue)}
-.motion-toggle[aria-pressed=true] .motion-toggle-icon::after{display:none}
 .email-link,.github-link{position:relative}
 .email-link::after,.github-link::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform 600ms var(--curve)}
 .email-link:hover::after,.email-link:focus-visible::after,.github-link:hover::after,.github-link:focus-visible::after{transform:scaleX(1)}
@@ -44,11 +36,8 @@ html[data-motion=paused] .reading-progress{animation-play-state:paused}
 @media(max-width:760px){
  .nav-indicator{display:none}
  .nav-links{position:fixed}
- .motion-toggle{right:16px;bottom:max(16px,env(safe-area-inset-bottom));font-size:14px;padding:8px 12px}
- .footer{padding-bottom:80px}
 }
 @media(prefers-reduced-motion:reduce){
  .reading-progress{display:none}
  .work-visual,.email-link span,.github-link span{transform:none!important}
- .motion-toggle{display:none}
 }
