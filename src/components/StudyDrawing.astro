@@ -1,0 +1,19 @@
+---
+interface Props {kind:'spatial'|'airflow'}
+const {kind}=Astro.props;
+---
+<svg class={`study-drawing study-${kind}`} viewBox="0 0 1000 440" fill="none" aria-hidden="true">
+ <defs><pattern id={`grid-${kind}`} width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="currentColor" stroke-opacity=".11" stroke-width=".7"/></pattern></defs>
+ <rect width="1000" height="440" fill={`url(#grid-${kind})`}/>
+ {kind==='spatial'?<>
+ <g class="model-layer model-ground" stroke="currentColor" stroke-opacity=".22" stroke-width="1">{Array.from({length:13},(_,i)=><><path d={`M${160+i*45} 210L${360+i*45} 350`}/><path d={`M${160+i*45} 210L${i*45} 350`}/></>)}</g>
+ <g class="model-layer model-base" stroke="currentColor" stroke-width="1.2"><path d="M210 285L530 180 810 285 490 390Z M210 285V200L530 95 810 200V285 M210 200L490 305 810 200 M490 305V390"/><path d="M290 258V176L448 124V206 M610 153V231L727 270 M370 229L650 334 M370 229V148 M650 334V252 M530 180V95"/><path d="M290 258L490 333 727 255 M370 229L610 153 M448 124L727 228"/></g>
+ <g class="model-layer model-upper" stroke="currentColor" stroke-opacity=".6"><path d="M210 138L530 33 810 138 490 243Z M210 138V112L530 7 810 112V138 M210 112L490 217 810 112 M490 217V243"/><path d="M290 112L570 217 M370 85L650 190 M450 59L730 164"/></g>
+ <g class="sensor-points" fill="currentColor">{[[290,258],[370,229],[530,95],[650,252],[727,270]].map(([x,y])=><circle cx={x} cy={y} r="3.5"/>)}</g>
+ <g stroke="currentColor" stroke-opacity=".4" stroke-dasharray="3 6"><path d="M530 33H910 M727 270H910 M650 334H910"/></g>
+ </>:<>
+ <g stroke="currentColor" stroke-width="1.4"><path d="M130 90H870V340H130Z M130 113H870 M130 317H870 M370 113V178 M370 245V317 M615 113V155 M615 231V317"/><path d="M130 90V70H870V90 M130 340V360H870V340 M153 113V317 M847 113V317"/><path d="M370 178A67 67 0 0 1 437 245H370 M615 155A76 76 0 0 1 691 231H615" stroke-opacity=".55"/></g>
+ <g class="airflow-streams" stroke="currentColor" stroke-width="1.15" stroke-opacity=".7">{Array.from({length:8},(_,i)=><path d={`M55 ${142+i*22}C200 ${100+i*22},260 ${120+i*20},355 ${180+i*13}S500 ${280-i*13},590 ${220-i*9}S745 ${110+i*23},945 ${145+i*20}`}/>)}</g>
+ <g class="airflow-dots" fill="currentColor">{Array.from({length:4},(_,i)=><circle cx={220+i*175} cy={170+i%2*65} r="3"/>)}</g>
+ </>}
+</svg>
