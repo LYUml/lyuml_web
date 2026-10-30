@@ -1,0 +1,10 @@
+---
+import TwinRoom from './TwinRoom.astro';
+---
+<div class="twin-diagram study-spatial">
+ <div class="twin-panel"><p class="twin-panel-title">Physical room</p><TwinRoom /><p class="twin-panel-note">Environmental sensors · IoT gateway · HVAC</p></div>
+ <div class="twin-connection" aria-hidden="true"><span>Data →</span><span>← Control</span></div>
+ <div class="twin-panel"><p class="twin-panel-title">Digital twin</p><TwinRoom digital /><p class="twin-panel-note">Spatial model · Sensor state · AI agents</p></div>
+ <p class="twin-cycle"><span>Sense</span><span aria-hidden="true">→</span><span>Model</span><span aria-hidden="true">→</span><span>Decide</span><span aria-hidden="true">→</span><span>Control</span><span aria-hidden="true">↺</span></p>
+ <p class="twin-disclaimer">Conceptual view · Not live data</p>
+</div>
