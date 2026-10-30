@@ -1,0 +1,54 @@
+/* Motion vocabulary: one intro, word-led scroll moments, local living illustrations. */
+.name-line{display:block;overflow:clip;padding-bottom:.24em;margin-bottom:-.24em}
+.name-line>span{display:inline-block;transform-origin:0 100%;padding-bottom:.2em;margin-bottom:-.2em}
+.word-clip{display:inline-block;overflow:clip;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.word-clip>span{display:inline-block}
+.hero h1{background:none;-webkit-text-fill-color:initial}
+.name-line>span{background:linear-gradient(100deg,#fff,#9b9b9b);background-clip:text;-webkit-text-fill-color:transparent}
+.name-line .name-dot{-webkit-text-fill-color:var(--blue)}
+.nav-links{position:relative;isolation:isolate}
+.nav-links>a{position:relative;z-index:1}
+.nav-indicator{position:absolute;top:6px;height:calc(100% - 12px);background:#272727;border-radius:9999px;opacity:0;pointer-events:none;transform-origin:0 50%}
+.work-visual{transition:transform 700ms var(--curve);transform-origin:50% 50%}
+.air-paths{opacity:.85}
+.music-art span{transform-origin:50% 50%}
+.runner-dot{transform:translate(262px,43px)}
+.motion-toggle{position:fixed;right:24px;bottom:24px;z-index:30;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #454545;border-radius:9999px;background:rgba(24,24,24,.92);color:#bdbdbd;font-size:14px;line-height:20px;transition:color 300ms var(--curve),transform 300ms var(--curve)}
+.motion-toggle[hidden],.menu-open .motion-toggle{display:none}
+.motion-toggle:hover{color:#fff;transform:translateY(-2px)}
+.motion-toggle-icon{width:12px;height:12px;position:relative;display:inline-block}
+.motion-toggle-icon::before,.motion-toggle-icon::after{content:'';position:absolute;top:1px;width:2px;height:10px;background:var(--blue)}
+.motion-toggle-icon::before{left:2px}.motion-toggle-icon::after{right:2px}
+.motion-toggle[aria-pressed=true] .motion-toggle-icon::before{left:3px;width:0;height:0;background:none;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:7px solid var(--blue)}
+.motion-toggle[aria-pressed=true] .motion-toggle-icon::after{display:none}
+.email-link,.github-link{position:relative}
+.email-link::after,.github-link::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform 600ms var(--curve)}
+.email-link:hover::after,.email-link:focus-visible::after,.github-link:hover::after,.github-link:focus-visible::after{transform:scaleX(1)}
+.email-link span,.github-link span{display:inline-block;transition:transform 500ms var(--curve)}
+.email-link:hover span,.github-link:hover span{transform:translate(4px,-4px)}
+@media(prefers-reduced-motion:no-preference){
+ html[data-motion=running] .experience::before{transform-origin:0 50%;transition:transform 1100ms var(--curve)}
+ html[data-motion=running] .experience:not(.motion-entered)::before{transform:scaleX(.08)}
+ html[data-motion=running] .skill-group::before{transform-origin:0 50%;transition:transform 900ms var(--curve)}
+ html[data-motion=running] .skill-group:not(.motion-entered)::before{transform:scaleX(.15)}
+ @supports(animation-timeline:scroll()){
+  .reading-progress{position:fixed;z-index:40;top:0;left:0;width:100%;height:2px;background:var(--blue);transform-origin:0 50%;animation:page-progress auto linear both;animation-timeline:scroll(root block);pointer-events:none}
+  @keyframes page-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+ }
+ @supports(animation-timeline:view()){
+  html[data-motion=running] .spatial-scene{animation:spatial-departure auto linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+  @keyframes spatial-departure{from{transform:translateY(0) scale(1);opacity:1}to{transform:translateY(64px) scale(.96);opacity:.3}}
+ }
+}
+html[data-motion=paused] .reading-progress{animation-play-state:paused}
+@media(max-width:760px){
+ .nav-indicator{display:none}
+ .nav-links{position:fixed}
+ .motion-toggle{right:16px;bottom:max(16px,env(safe-area-inset-bottom));font-size:14px;padding:8px 12px}
+ .footer{padding-bottom:80px}
+}
+@media(prefers-reduced-motion:reduce){
+ .reading-progress{display:none}
+ .work-visual,.email-link span,.github-link span{transform:none!important}
+ .motion-toggle{display:none}
+}

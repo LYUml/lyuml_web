@@ -10,9 +10,10 @@ if (canvas) {
  if (ctx) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const small = matchMedia('(max-width: 760px)');
-  let w=0,h=0,t=0,frame=0,visible=true,pointer=0,left=0;
+  let w=0,h=0,t=0,frame=0,visible=true,pointer=0,targetPointer=0,left=0,paused=document.documentElement.dataset.motion==='paused';
+  canvas.dataset.sceneState='idle';
   const project=(x:number,y:number,z:number) => {
-   const a=-0.5 + pointer*0.12;
+   const a=-0.5 + pointer*0.22 + Math.sin(t*.12)*.16;
    const xx=x*Math.cos(a)-z*Math.sin(a),zz=x*Math.sin(a)+z*Math.cos(a);
    const s=Math.min(w/13,h/10);
    return [w*0.52+xx*s,h*0.52+(zz*0.4-y)*s];
@@ -23,9 +24,11 @@ if (canvas) {
   };
   const draw=()=>{
    ctx.clearRect(0,0,w,h);
+   const assembly=(reduced.matches||paused)?1:1-Math.pow(1-Math.min(t/2.4,1),3);
+   ctx.globalAlpha=(reduced.matches||paused)?1:Math.min(1,t/.8);
    for(let x=-6;x<=6;x++) line([x,-2,-5],[x,-2,5],'rgba(132,161,205,.10)');
    for(let z=-5;z<=5;z++) line([-6,-2,z],[6,-2,z],'rgba(132,161,205,.10)');
-   const levels=[-1.7,-0.35,1,2.35];
+   const levels=[-1.7,-0.35,1,2.35].map((y,i)=>y+(i-1.5)*1.8*(1-assembly));
    levels.forEach((y,i)=>{
     const corners=[[-3,y,-2.1],[3,y,-2.1],[3,y,2.1],[-3,y,2.1]];
     const pts=corners.map(a=>project(a[0],a[1],a[2]));
@@ -47,13 +50,15 @@ if (canvas) {
   };
   const resize=()=>{const box=canvas.getBoundingClientRect();w=box.width;h=box.height;left=box.left;const d=Math.min(devicePixelRatio,2);canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0);draw();};
   let last=0;
-  const tick=(now:number)=>{frame=0;if(!visible||document.hidden||reduced.matches)return;if(now-last>(small.matches?65:32)){t+=Math.min((now-last)/1000,.1);last=now;draw();}frame=requestAnimationFrame(tick);};
-  const start=()=>{if(!frame&&visible&&!document.hidden&&!reduced.matches){last=performance.now();frame=requestAnimationFrame(tick);}};
+  const tick=(now:number)=>{frame=0;if(!visible||document.hidden||reduced.matches||paused)return;if(now-last>(small.matches?65:32)){t+=Math.min((now-last)/1000,.1);last=now;pointer+=(targetPointer-pointer)*.08;draw();canvas.dataset.sceneTime=t.toFixed(2);}frame=requestAnimationFrame(tick);};
+  const start=()=>{if(!frame&&visible&&!document.hidden&&!reduced.matches&&!paused){last=performance.now();canvas.dataset.sceneState='running';frame=requestAnimationFrame(tick);}};
   new ResizeObserver(resize).observe(canvas);
-  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)start();else{cancelAnimationFrame(frame);frame=0;}}).observe(canvas);
-  canvas.parentElement?.addEventListener('pointermove',e=>{pointer=Math.max(-.5,Math.min(.5,(e.clientX-left)/w-.5));if(reduced.matches)draw();});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else start();});
-  reduced.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;draw();start();});
+  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)start();else{cancelAnimationFrame(frame);frame=0;canvas.dataset.sceneState='paused';}}).observe(canvas);
+  canvas.parentElement?.addEventListener('pointermove',e=>{if(reduced.matches||paused||small.matches)return;targetPointer=Math.max(-.5,Math.min(.5,(e.clientX-left)/w-.5));});
+  canvas.parentElement?.addEventListener('pointerleave',()=>{targetPointer=0;});
+  document.addEventListener('motion-preference',(event)=>{paused=(event as CustomEvent<{paused:boolean}>).detail.paused;cancelAnimationFrame(frame);frame=0;canvas.dataset.sceneState='paused';draw();start();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;canvas.dataset.sceneState='paused';}else start();});
+  reduced.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;canvas.dataset.sceneState='paused';draw();start();});
  }
 }
 </script>

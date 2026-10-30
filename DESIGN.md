@@ -25,3 +25,6 @@ Use original decorative SVG topic illustrations instead of institution logos or 
 
 ## Open composition with selective boundaries (approved)
 Reduce repeated enclosing panels: experiences use thin horizontal dividers, plain tags and unboxed topic illustrations; skill columns and personal interests remain open. Keep a subtle full border on the education block and on exploration image areas only, not around the combined image and description. Short accent strokes introduce skill groups and personal themes. The footer has one separating rule. Preserve floating navigation and CTA boundaries for interaction. Exploration and life visuals have staggered desktop placement, returning to a single-column mobile flow. Retain large readable typography and native disclosure; remove repetitive section entrance motion while preserving the hero scene and tagline reveal.
+
+## Expanded motion (approved 2026-10-30)
+User requested a much richer animated presentation. MOTION.md now governs choreography, superseding the earlier removal of section entrances. Preserve open layout and selective borders. Use native WAAPI for finite entrances and isolated illustration loops, CSS scroll timelines where supported, and the existing canvas. Support a unified pause control and OS reduced motion. No sound, no scroll hijacking, no new animation dependencies.
