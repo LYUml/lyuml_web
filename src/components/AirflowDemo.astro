@@ -1,0 +1,26 @@
+---
+import {openingNames} from '../lib/airflow';
+const controls=[{id:'west',x:150,y:196,angle:-48,hinge:'150px 156px',leaf:'M150 156V236'}, {id:'doorA',x:390,y:207,angle:-78,hinge:'390px 168px',leaf:'M390 168V246'}, {id:'doorB',x:610,y:207,angle:78,hinge:'610px 168px',leaf:'M610 168V246'}, {id:'east',x:850,y:196,angle:48,hinge:'850px 156px',leaf:'M850 156V236'}];
+---
+<div class="airflow-demo" data-airflow-demo>
+ <div class="airflow-heading"><span data-flow-label>Cross ventilation</span><span class="demo-mode" data-airflow-mode>Auto tour</span></div>
+ <div class="airflow-stage">
+  <svg viewBox="0 0 1000 410" class="interactive-airflow" fill="none" aria-hidden="true">
+   <defs><pattern id="airflow-demo-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="currentColor" stroke-opacity=".07"/></pattern></defs>
+   <rect width="1000" height="410" fill="url(#airflow-demo-grid)"/>
+   <g stroke="currentColor" stroke-width="1.6"><path d="M150 156V90H850V156 M150 236V320H850V236 M390 90V168 M390 246V320 M610 90V168 M610 246V320"/><path d="M142 156V82H858V156 M142 236V328H858V236" stroke-opacity=".35"/></g>
+   <g class="airflow-zone-streams" fill="none" stroke="currentColor" stroke-width="1.3" stroke-opacity=".6">
+    {[0,1,2].map((zone)=><g data-zone-flow={zone}>{Array.from({length:4},(_,i)=>{const left=[172,412,632][zone],right=[368,588,828][zone];return <path data-flow-path d={`M${left+16} ${132+i*19}C${right-25} ${99+i*19},${right+5} ${205+i*10},${right-35} ${250+i*9}S${left+5} ${292-i*10},${left+16} ${200+i*5}`} />})}</g>)}
+   </g>
+   <g data-cross-flow stroke="currentColor" stroke-width="1.5">{Array.from({length:6},(_,i)=><path data-flow-path d={`M65 ${150+i*17}C205 ${130+i*18},280 ${155+i*14},390 ${184+i*9}S515 ${226-i*6},610 ${184+i*9}S790 ${142+i*18},935 ${150+i*17}`}/>)}</g>
+   <g stroke="currentColor" stroke-width="1.3">
+    {controls.map(c=><g data-opening-link={c.id}><path data-flow-path d={c.id==='west'?'M80 194H205':c.id==='east'?'M790 194H920':`M${c.x-42} 207H${c.x+42}`}/></g>)}
+   </g>
+   <g stroke="currentColor" stroke-width="3" stroke-linecap="round">{controls.map(c=><g class="opening-leaf" data-opening-leaf={c.id} data-open-angle={c.angle} style={`transform-origin:${c.hinge};transform:rotate(${c.angle}deg)`}><path d={c.leaf}/></g>)}</g>
+   <g fill="currentColor" font-family="Manrope,Arial,sans-serif" font-size="12" text-anchor="middle"><text x="150" y="62">West window</text><text x="390" y="62">Door A</text><text x="610" y="62">Door B</text><text x="850" y="62">East window</text><text x="265" y="361" opacity=".5">Zone 1</text><text x="500" y="361" opacity=".5">Zone 2</text><text x="735" y="361" opacity=".5">Zone 3</text></g>
+  </svg>
+  {controls.map(c=><button type="button" class="opening-hit" data-opening={c.id} aria-label={`Toggle ${openingNames[c.id as keyof typeof openingNames]}`} aria-pressed="true" style={`left:${c.x/10}%;top:${c.y/410*100}%`}><span class="sr-only">{openingNames[c.id as keyof typeof openingNames]}</span></button>)}
+ </div>
+ <div class="opening-states">{controls.map(c=><span><span>{openingNames[c.id as keyof typeof openingNames]}</span><strong data-opening-state={c.id}>Open</strong></span>)}</div>
+ <p class="demo-hint">Click a door or window to change the airflow.</p>
+</div>

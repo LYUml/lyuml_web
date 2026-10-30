@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LineField from '../components/LineField.astro';
-import StudyDrawing from '../components/StudyDrawing.astro';
+import AirflowDemo from '../components/AirflowDemo.astro';
 import DigitalTwinDiagram from '../components/DigitalTwinDiagram.astro';
 import MusicWave from '../components/MusicWave.astro';
 import '@fontsource/anton/latin-400.css';
@@ -42,8 +42,8 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 <section id="exploring" class="section exploring-section">
  <div class="section-heading reveal"><div><p class="eyebrow">On my desk</p><h2>Still exploring.</h2></div><p class="section-description">A closer look at what I’m working on.<br/>Questions in progress, with room to grow.</p></div>
  <div class="exploration-grid">
-  <article class="exploration-card reveal"><div class="work-visual room-visual"><DigitalTwinDiagram /><span class="visual-label">ZB202 · AI-powered digital twin &amp; smart control</span></div><div class="work-copy"><p class="work-category">Digital twins / PolyU</p><h3>ZB202, connected.</h3><p>ZB202 is a laboratory in PolyU’s Z Core, and our base for digital twin research. We’re connecting the lab’s spatial model, IoT sensor data, and browser interface to study the relationship between the physical space and its digital representation.</p><span class="status"><span></span>Currently developing</span></div></article>
-  <article class="exploration-card reveal"><div class="work-visual airflow-visual"><StudyDrawing kind="airflow" /><span class="visual-label">MOOSAS · Topology-driven thermal &amp; airflow simulation</span></div><div class="work-copy"><p class="work-category">Building simulation / Tsinghua</p><h3>Heat, air, and everything between.</h3><p>Using MOOSAS to represent building topology and explore automated performance optimization by changing how spaces connect. Coupled thermal and airflow simulation with CONTAM helps evaluate the effects of those changes, alongside field measurement validation.</p><span class="status"><span></span>Research in progress</span></div></article>
+  <article class="exploration-card reveal"><div class="work-copy"><p class="work-category">Digital twins / PolyU</p><h3>ZB202, connected.</h3><p>ZB202 is a laboratory in PolyU’s Z Core, and our base for digital twin research. We’re connecting the lab’s spatial model, IoT sensor data, and browser interface to study the relationship between the physical space and its digital representation.</p><span class="status"><span></span>Currently developing</span></div><div class="work-visual room-visual"><DigitalTwinDiagram /><span class="visual-label">ZB202 · AI-powered digital twin &amp; smart control</span></div></article>
+  <article class="exploration-card reveal"><div class="work-copy"><p class="work-category">Building simulation / Tsinghua</p><h3>Heat, air, and everything between.</h3><p>Using MOOSAS to represent building topology and explore automated performance optimization by changing how spaces connect. Coupled thermal and airflow simulation with CONTAM helps evaluate the effects of those changes, alongside field measurement validation.</p><span class="status"><span></span>Research in progress</span></div><div class="work-visual airflow-visual"><AirflowDemo /><span class="visual-label">MOOSAS · Topology-driven thermal &amp; airflow simulation</span></div></article>
  </div>
 </section>
 <section id="about" class="section about-section">
@@ -61,6 +61,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 <footer class="section footer"><a class="wordmark" href="#home" aria-label="Back to top">ml<span>.</span></a><p>© {new Date().getUTCFullYear()} Mingliang Lyu</p><div><a href={`${base}privacy/`}>Privacy</a><a href="#home">Back to top ↑</a></div></footer>
 <script>
 import '../scripts/kinetic';
+import '../scripts/research-interactions';
 const menu=document.querySelector<HTMLButtonElement>('.menu-toggle');
 const links=document.querySelector<HTMLElement>('#nav-links');
 const background=Array.from(document.querySelectorAll<HTMLElement>('main,footer,.site-header>.wordmark'));

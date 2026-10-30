@@ -1,8 +1,19 @@
 ---
 import TwinRoom from './TwinRoom.astro';
+import {demoSensors,roomProjection} from '../data/demo-sensors';
 ---
-<div class="twin-diagram study-spatial">
- <div class="twin-room-panel"><TwinRoom /></div>
+<div class="twin-diagram study-spatial" data-sensor-demo>
+ <div class="twin-demo-heading"><span>Explore the sensors</span><span class="demo-mode" data-sensor-mode>Auto tour</span></div>
+ <div class="twin-room-panel"><div class="twin-room-canvas" data-sensor-stage>
+  <TwinRoom />
+  {demoSensors.map((sensor,i)=>{const [x,y]=roomProjection(...sensor.position as [number,number,number]);return <button type="button" class="sensor-hotspot" data-sensor={sensor.id} data-x={x} data-y={y} aria-label={`Inspect ${sensor.label} sensor`} aria-pressed={i===0?'true':'false'} style={`left:${x/440*100}%;top:${y/310*100}%`}><span class="sensor-hotspot-dot"></span><span class="sensor-hotspot-label">{sensor.short}</span></button>})}
+  </div><div class="sensor-info" data-sensor-info role="region" aria-label="Sensor details">
+   <div class="sensor-info-top"><span data-sensor-name>Temperature</span><span class="demo-badge">Demo</span></div>
+   <p class="sensor-reading"><strong data-sensor-value>24.1</strong><span data-sensor-unit>°C</span></p>
+   <svg class="sensor-spark" viewBox="0 0 180 36" aria-hidden="true"><path data-sensor-trend d="M0 30L180 10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+   <p data-sensor-detail>Air temperature near the window.</p><p class="sensor-status" data-sensor-status>Within comfort range</p>
+  </div>
+ </div>
+ <p class="demo-hint">Move near a sensor, or tap to inspect.</p>
  <p class="twin-flow"><span>IoT sensing</span><span aria-hidden="true">→</span><span>Digital model</span><span aria-hidden="true">→</span><span>AI agents</span><span aria-hidden="true">→</span><span>HVAC &amp; lighting control</span></p>
- <p class="twin-disclaimer">Conceptual view · Not live data</p>
 </div>

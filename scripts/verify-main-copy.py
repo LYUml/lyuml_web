@@ -41,6 +41,8 @@ retired_home_copy={
 unchanged=[text for text in old.blocks if text not in retired_home_copy]
 missing=[text for text in unchanged if compact(text) not in alltext]
 profile=subprocess.check_output(['git','show','main:src/data/profile.ts'],cwd=root)
-assert profile==(root/'src/data/profile.ts').read_bytes(),'Profile data differs from main'
+# Explicit skill additions requested on 2026-10-30; all other profile content is protected.
+expected_profile=profile.decode().replace("'Rust','Nix'", "'Rust','HTML · CSS · JavaScript','Nix'").replace("'OpenBIM software'", "'Other OpenBIM software'")
+assert expected_profile==(root/'src/data/profile.ts').read_text(),'Unexpected profile changes beyond approved skill edits'
 assert not missing,'Missing or changed prose: '+repr(missing)
-print(f'PASS: {len(unchanged)} unchanged original prose blocks retained (3 approved homepage revisions); profile.ts byte-identical to main.')
+print(f'PASS: {len(unchanged)} unchanged original prose blocks retained (3 approved homepage revisions); profile matches main plus the two approved skill edits.')
