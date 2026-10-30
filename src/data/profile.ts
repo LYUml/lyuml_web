@@ -14,7 +14,7 @@ export const awards = [
  {year:'2021',name:'Chinese Mathematics Olympiad (CMO)',detail:'Provincial Second Prize'}
 ];
 export const skills: {title: string; items: string[]; note?: string}[] = [
- {title:'Programming & systems',items:['Python · C++','R · MATLAB','Rust','Nix'],note:'I love open source. Also exploring Linux, especially NixOS.'},
+ {title:'Programming & systems',items:['Python · C++','R · MATLAB','Rust','Nix'],note:'An open source enthusiast, with a particular interest in Linux and NixOS.'},
  {title:'Data & optimization',items:['Time series forecasting','Predictive modelling','Quantitative evaluation','Mathematical optimization','Gurobi']},
  {title:'Building simulation',items:['MOOSAS','CONTAM','EnergyPlus','Other NIST simulation tools']},
  {title:'Design & making',items:['Revit','AutoCAD','SketchUp','Blender','OpenBIM software'],note:'Keen to try and develop OpenBIM software, and explore how AI can be part of it.'}
