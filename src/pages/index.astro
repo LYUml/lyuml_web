@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SpatialScene from '../components/SpatialScene.astro';
 import ExperienceIcon from '../components/ExperienceIcon.astro';
-import { experience, awards, skills } from '../data/profile';
+import { experience, awards, skills, affiliations } from '../data/profile';
 const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 ---
 <Layout>
@@ -39,6 +39,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
  <div class="section-heading reveal"><div><p class="eyebrow">A bit of background</p><h2>Foundations.<br/>And forward motion.</h2></div><p class="section-description">An engineering education.<br/>An applied mathematics perspective.</p></div>
  <div class="background-grid"><article class="education reveal"><span class="work-category">Education</span><h3>The Hong Kong<br/>Polytechnic University</h3><p>BEng (Hons) in Building Sciences and Engineering</p><p class="muted">Minor in Applied Mathematics</p><div class="education-bottom"><span>2024 — Present</span><span class="top-percent">Top 5%</span></div></article>
  <div class="awards reveal"><h3>Recognition</h3>{awards.map(a=><div class="award"><span class="award-year">{a.year}</span><div><h4>{a.name}</h4><p>{a.detail}</p></div></div>)}</div></div>
+ <div class="awards reveal"><h3>Professional affiliations</h3>{affiliations.map(a=><div class="award"><span class="award-year">{a.year}</span><div><h4>{a.name}</h4><p>{a.detail}</p></div></div>)}</div>
  <div id="skills" class="skills-section reveal"><div class="skills-heading"><h3>Tools I think & build with.</h3><p>From data and models to spaces and systems.</p></div><div class="skills-grid">{skills.map(group=><div class="skill-group"><h4>{group.title}</h4><div>{group.items.map(item=><span>{item}</span>)}</div>{group.note&&<p class="skill-note">{group.note}</p>}</div>)}</div></div>
 </section>
 <section class="section life-section" id="life"><div class="section-heading reveal"><div><p class="eyebrow">Away from the desk</p><h2>There’s more<br/>to the story.</h2></div><p class="section-description">Sometimes on stage.<br/>Sometimes out on the court.</p></div><div class="life-grid">
