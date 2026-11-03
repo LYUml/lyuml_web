@@ -19,3 +19,8 @@ export const skills: {title: string; items: string[]; note?: string}[] = [
  {title:'Building simulation',items:['MOOSAS','CONTAM','EnergyPlus','Other NIST simulation tools'],note:'Curious about how buildings behave, and how simulation can help us make them work better.'},
  {title:'Design & making',items:['Revit','AutoCAD','SketchUp','Blender','Other OpenBIM software'],note:'Keen to try and develop OpenBIM software, and explore how AI can be part of it.'}
 ];
+
+export const affiliations = [
+ {year:'2026',name:'The Hong Kong Institution of Engineers (HKIE)',detail:'Student Member'},
+ {year:'2026–2027',name:'EIHK YPN Student Ambassador Program',detail:'Shortlisted'}
+];
