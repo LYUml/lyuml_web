@@ -9,6 +9,7 @@ import '@fontsource/anton/latin-400.css';
 import '../styles/kinetic.css';
 import ExperienceIcon from '../components/ExperienceIcon.astro';
 import { experience, awards, skills } from '../data/profile';
+import Repositories from '../components/Repositories.astro';
 const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
 ---
 <Layout variant="kinetic">
@@ -18,7 +19,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
  <span class="header-location">Hong Kong / Beijing</span>
  <nav aria-label="Main navigation">
   <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
-  <div id="nav-links" class="nav-links"><a href="#experience">Experience</a><a href="#exploring">Exploring</a><a href="#about">About</a><a href="#contact" class="nav-contact">Let’s talk <span aria-hidden="true"><ArrowUpRight /></span></a></div>
+  <div id="nav-links" class="nav-links"><a href="#experience">Experience</a><a href="#exploring">Exploring</a><a href="#github">GitHub</a><a href="#about">About</a><a href="#contact" class="nav-contact">Let’s talk <span aria-hidden="true"><ArrowUpRight /></span></a></div>
  </nav>
 </header>
 <main id="main">
@@ -47,6 +48,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/`;
   <article class="exploration-card reveal"><div class="work-copy"><p class="work-category">Building simulation / Tsinghua</p><h3>Heat, air, and everything between.</h3><p>Using MOOSAS to represent building topology and explore automated performance optimization by changing how spaces connect. Coupled thermal and airflow simulation with CONTAM helps evaluate the effects of those changes, alongside field measurement validation.</p><span class="status"><span></span>Research in progress</span></div><div class="work-visual airflow-visual"><AirflowDemo /><span class="visual-label">MOOSAS · Topology-driven thermal &amp; airflow simulation</span></div></article>
  </div>
 </section>
+<Repositories />
 <section id="about" class="section about-section">
  <div class="section-heading reveal"><div><p class="eyebrow">A bit of background</p><h2>Foundations.<br/>And forward motion.</h2></div><p class="section-description">An engineering education.<br/>An applied mathematics perspective.</p></div>
  <div class="background-grid"><article class="education reveal"><span class="work-category">Education</span><h3>The Hong Kong <br/>Polytechnic University</h3><p class="degree"><span>BEng (Hons)</span> <span>in Building Sciences and Engineering</span></p><p class="muted">Minor in Applied Mathematics</p><div class="education-bottom"><span>2024 — Present</span><span class="top-percent">Top 5%</span></div></article>
@@ -72,7 +74,7 @@ links?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',e=>{if(e.key==='Tab'&&menu?.getAttribute('aria-expanded')==='true'){const targets=[menu,...Array.from(links?.querySelectorAll<HTMLAnchorElement>('a')??[])];const first=targets[0],last=targets[targets.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}if(e.key==='Escape'&&menu?.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus();}});
 matchMedia('(min-width: 761px)').addEventListener('change',e=>{if(e.matches)closeMenu();});
 const navLinks=Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-links a'));
-const sections=['home','experience','exploring','about','contact'].map(id=>document.getElementById(id)).filter((x):x is HTMLElement=>!!x);
+const sections=['home','experience','exploring','github','about','contact'].map(id=>document.getElementById(id)).filter((x):x is HTMLElement=>!!x);
 const navObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>{const active=a.hash===`#${entry.target.id}`;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});document.dispatchEvent(new CustomEvent('navigation-active'));}});},{rootMargin:'-15% 0px -55% 0px'});
 sections.forEach(section=>navObserver.observe(section));
 </script>

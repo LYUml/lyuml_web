@@ -1,0 +1,33 @@
+---
+import ArrowUpRight from './ArrowUpRight.astro';
+const repositories = [
+  { name: 'building-services-agent', href: 'https://github.com/LYUml/building-services-agent', category: 'Building services · AI agents', description: 'Exploring agent workflows for building services engineering, connecting IFC models, spatial analysis, and HVAC design tools.' },
+  { name: 'DIALux-agent', href: 'https://github.com/LYUml/DIALux-agent', category: 'Lighting design · CLI & MCP', description: 'Bringing DIALux evo into agent workflows: create rooms, place luminaires, run lighting calculations, and export reports through a CLI or an MCP client.' },
+];
+---
+<section id="github" class="section repositories-section">
+  <div class="section-heading reveal"><div><p class="eyebrow">On GitHub</p><h2>Code, shared.</h2></div><p class="section-description">Things I’m building.<br/>And things we’re building together.</p></div>
+  <div class="repository-group reveal">
+    <h3 class="repository-group-title">Selected repositories</h3>
+    <div class="repository-list">{repositories.map(repo => <article class="repository-row"><div><p class="work-category">{repo.category}</p><h4><a href={repo.href} target="_blank" rel="noopener noreferrer">{repo.name}<span aria-hidden="true"><ArrowUpRight /></span></a></h4></div><p class="repository-description">{repo.description}</p></article>)}</div>
+  </div>
+  <div class="repository-group repository-community reveal">
+    <h3 class="repository-group-title">Coursework & community</h3>
+    <article class="repository-row"><div><p class="work-category">PolyU · Shared course resources</p><h4><a href="https://github.com/caiqizh/PolyU_COMP" target="_blank" rel="noopener noreferrer">PolyU_COMP<span aria-hidden="true"><ArrowUpRight /></span></a></h4></div><div class="repository-description"><p>My friends and I are building an open source community for sharing course resources at PolyU.</p><p>We’re bringing together student projects, code, notes, and course experiences, so we can learn from each other and make it easier for the next person to get started.</p></div></article>
+  </div>
+</section>
+<style>
+  .repositories-section{padding:72px 48px 64px;border-top:1px solid var(--line);scroll-margin-top:96px}
+  .repository-group-title{font-family:Manrope,Arial,sans-serif;font-size:16px;font-weight:500;margin:0 0 24px;color:var(--muted)}
+  .repository-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding:32px 0;border-top:1px solid var(--line)}
+  .repository-row h4{margin:0;font-size:clamp(24px,2.5vw,36px);font-weight:500;line-height:1.35;overflow-wrap:anywhere;text-wrap:balance}
+  .repository-row h4 a{display:inline-flex;align-items:baseline;gap:16px;text-decoration:none}
+  .repository-row h4 a span{flex:none;font-size:24px;transition:transform 180ms ease-out}
+  .repository-row h4 a:hover span{transform:translate(3px,-3px)}
+  .repository-row h4 a:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+  .repository-description{font-size:16px;line-height:1.8;color:var(--muted);margin:0;max-width:640px;text-wrap:pretty}
+  .repository-description p{margin:0}.repository-description p+p{margin-top:16px}
+  .repository-community{margin-top:40px}
+  @media(max-width:760px){.repositories-section{padding:48px 20px}.repository-row{grid-template-columns:minmax(0,1fr);gap:20px;padding:24px 0}.repository-row h4{font-size:24px}.repository-community{margin-top:32px}}
+  @media(prefers-reduced-motion:reduce){.repository-row h4 a span{transition:none}.repository-row h4 a:hover span{transform:none}}
+</style>
