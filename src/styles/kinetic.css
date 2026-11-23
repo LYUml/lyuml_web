@@ -40,3 +40,5 @@ html[data-kinetic-motion=reduce]{scroll-behavior:auto}.kinetic.is-reduced-motion
 /* Align the footer frame with the main content frame. */
 .kinetic .footer.section{width:calc(100% - 32px);max-width:1768px;margin-inline:auto}
 @media(max-width:760px){.kinetic .footer.section{width:calc(100% - 24px)}}
+
+.kinetic .github-profile-icon{display:block;width:32px;height:32px;background:currentColor;mask:var(--github-mark) center/contain no-repeat}.kinetic .github-profile:hover{background:var(--text);color:var(--bg)}
