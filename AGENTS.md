@@ -7,3 +7,6 @@ Keep all work in this repository. Save meaningful stages with Git; use English f
 Never add CV PDFs, phone numbers, numeric GPA, private knowledge-base content, fabricated achievements, live telemetry, or unconfirmed publication/authorship claims. Only show Top 5%. Keep early physics and mathematics awards at equal visibility to other awards. MOOSAS is a tool used in a Tsinghua collaboration, not a project owned by the site author. The ZB202 visual is deferred for separate user discussion. User photos for music and sports are pending; do not substitute invented people.
 
 Use `npm run check` and `npm run build` for verification. Check desktop and mobile visually when browser access is available, including experience disclosure, navigation, and reduced motion. Report verification limitations honestly.
+
+## Personal homepage deployment
+The primary public URL is https://lyuml.github.io/ as of 2026-11-23. Source remains in LYUml/lyuml_web on codex/kinetic-grid; LYUml/LYUml.github.io contains the generated static site on main. When publication is authorized, run `bash scripts/deploy-personal-pages.sh`, then wait for the Pages build in LYUml/LYUml.github.io and verify the public URL. The old deploy.yml workflow only updates the legacy /lyuml_web/ address. Keep README limited to the primary website link.
