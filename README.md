@@ -1,1 +1,1 @@
-[GitHub Pages](https://lyuml.github.io/lyuml_web/)
+[GitHub Pages](https://lyuml.github.io/)
